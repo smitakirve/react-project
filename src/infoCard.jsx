@@ -1,0 +1,56 @@
+import * as React from 'react';
+import Card from '@mui/material/Card';
+import "./infoCard.css"
+
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
+import ThunderstormIcon from '@mui/icons-material/Thunderstorm';
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+
+export default function InfoCard({info}){
+ const INIT_URL="https://plus.unsplash.com/premium_photo-1673240845240-2fce9077a6e9?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+ 
+//  let info={ 
+//     city:"Delhi",
+//     feelslike:24.84,
+//     temp:25.05,
+//     tempMin:23,
+//     tempMax:25.7,
+//     humidity:47,
+//     weather:"haze",
+//  }
+    let RAIN_URL="https://www.istockphoto.com/photo/transparent-umbrella-under-rain-against-water-drops-splash-background-rainy-weather-gm1257951336-368822698?utm_campaign=srp_photos_top&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fcold-weather&utm_medium=affiliate&utm_source=unsplash&utm_term=cold+weather%3A%3A%3A"
+    
+    let HOT_URL="data:image/jpeg;base64,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"
+    
+    let COLD_URL="https://images.pexels.com/photos/300857/pexels-photo-300857.jpeg?auto=compress&cs=tinysrgb&w=600"
+    return(
+    <div>
+      
+      <div className='card'>
+     <Card sx={{ maxWidth: 345 }}>
+      <CardMedia
+        sx={{ height: 140 }}
+        image={info.humidity>80 ? RAIN_URL: info.temp>15 ? HOT_URL:COLD_URL}
+        title="green iguana"
+      />
+      <CardContent>
+        <Typography gutterBottom variant="h5" component="div">
+          {info.city}{info.humidity>80 ? <ThunderstormIcon/>: info.temp>15 ? <WbSunnyIcon/> : <AcUnitIcon/>}
+        </Typography>
+        <Typography variant="body2" color="text.secondary" component={"span"}>
+         <p>Temperature={info.temp}&deg;C</p>
+         <p>Humidity={info.humidity}</p>
+         <p>Min.Temperature={info.tempMin}&deg;C</p>
+         <p>Max. Temperature={info.tempMax}&deg;C</p>
+         <p>The Weather feels like={info.feelslike}&deg;C</p>
+        </Typography>
+      </CardContent>
+    </Card>
+    </div>
+    </div>
+    )
+}
